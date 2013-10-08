@@ -24,7 +24,7 @@ endf
 fun s:Return()
 	let tag = s:GetCurrentTag()
 	if(tag != '' && match(getline('.'), '</'.tag.'>') > -1)
-		return pumvisible() ? 
+		return pumvisible() ?
 				\ "\<space>\<bs>\<cr>\<cr>\<up>"
 				\ : "\<cr>\<cr>\<up>"
 	else
@@ -65,7 +65,7 @@ fun s:CloseTag()
 		let tag = s:GetCurrentTag()
 		" Insert closing tag if tag is not self-closing and has not already
 		" been closed
-		if tag != '' && tag !~ '\vimg|input|link|meta|br|hr|area|base|param|dd|dt'
+		if tag != '' && tag !~ '\vimg|input|link|meta|br|hr|area|base|param'
 					\ && !s:ClosingTag(tag)
 			let line = substitute(line, '\%'.col.'c', '</'.escape(tag, '/').'>', '')
 			call setline('.', line)
